@@ -1,1 +1,13 @@
-hi
+<h1>Your To Dos</h1>
+
+<form id="todos" action="">
+  <input type="text" placeholder="Your To-Do" />
+</form>
+
+<ul>
+  <li ng-repeat="todo in todos">
+    <input type="checkbox" />
+    <p>{{todo.title}}</p>
+    <a href="#delete">delete</a>
+  </li>
+</ul>
