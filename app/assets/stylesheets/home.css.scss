@@ -25,6 +25,9 @@
       width: 350px;
     }
   }
+  #todos_data {
+    display: none;
+  }
   #todo_list {
     li {
       float: left;

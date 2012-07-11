@@ -3,6 +3,7 @@ ToDo::Application.routes.draw do
   # first created -> highest priority.
 
   root :to => 'home#index'
+  resources :todos
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

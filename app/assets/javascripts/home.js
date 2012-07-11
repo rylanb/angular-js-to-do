@@ -3,11 +3,12 @@
 
 //Angular Functions
 function ToDosListCTRL($scope) {
-  $scope.todos = [
-    {"title": "Buy lots of things"},
-    {"title": "Sell It Out!"},
-    {"title": "Testing"}
-  ];
+  $scope.todos = $('#todos_data').data('todos');
+  // [
+  //   {"title": "Buy lots of things"},
+  //   {"title": "Sell It Out!"},
+  //   {"title": "Testing"}
+  // ];
 }
 
 //Setup for binding of form/delete events
@@ -20,10 +21,23 @@ $(function() {
   //Bind Click/Submit Handlers
   $('#todos_form').submit(function(){
     $.ajax({
-      url: "/todos/new",
-      context: document.body
+      url: "/todos/",
+      data: {"title" : $(this).find('input').val()},
+      dataType: 'json',
+      type: 'POST'
     }).done(function() {
-      $(this).addClass("done");
+      console.log('created!');
     });
-  })
+  });
+
+  $('#todo_list').on('click', '.delete', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: "/todos/" + $(this).data('todoid'),
+      dataType: 'json',
+      type: 'DELETE'
+    }).done(function() {
+      alert('deleted!')
+    });
+  });
 });

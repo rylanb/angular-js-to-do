@@ -9,11 +9,14 @@
     <li ng-repeat="todo in todos">
       <input type="checkbox" name="check_{{todo.index}}" id="check_{{todo.index}}" />
       <label for="check_{{todo.index}}">{{todo.title}}</label>
-      <a href="#delete" method="delete">delete</a>
+      <a href="#delete" class="delete" data-todoid="{{todo.id}}">delete</a>
     </li>
   </ul>
 
   <p id="number_todos">{{todos.length}} To Dos</p>
 
+  <%= content_tag "div", id: "todos_data", data: {todos: @todos} do %>
+    Loading To-Dos...
+  <% end %>
 
 </div>
