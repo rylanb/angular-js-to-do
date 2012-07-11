@@ -3,5 +3,9 @@
 FactoryGirl.define do
   factory :todo do
     title "My Title"
+
+    factory :done do
+      done true
+    end
   end
 end

@@ -15,7 +15,7 @@ describe ToDo do
   end
 
   it "should return done to-do as finished" do
-    todo = Factory.build(:todo, :done => true)
+    todo = Factory.build(:done)
     todo.finished?.should eq(true)
   end
 
