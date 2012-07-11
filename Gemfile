@@ -19,17 +19,17 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'rspec-rails'
   #gem 'minitest'
-  gem 'capybara'
   #gem 'capybara-webkit'
   #gem 'capistrano-ext'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
   #gem 'email_spec'
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-  #gem 'turn'
+  gem 'faker'
+  gem 'capybara'
   gem 'launchy'
   #gem 'mocha'
 end
