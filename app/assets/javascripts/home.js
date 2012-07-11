@@ -4,11 +4,6 @@
 //Angular Functions
 function ToDosListCTRL($scope) {
   $scope.todos = $('#todos_data').data('todos');
-  // [
-  //   {"title": "Buy lots of things"},
-  //   {"title": "Sell It Out!"},
-  //   {"title": "Testing"}
-  // ];
 }
 
 //Setup for binding of form/delete events
