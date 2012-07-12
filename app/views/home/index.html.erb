@@ -1,15 +1,15 @@
 <div id="todos">
   <h1>Your To Dos</h1>
 
-  <form id="todos_form" action="">
-    <input type="text" placeholder="Your To-Do" />
+  <form id="todos_form" action="" ng-submit="addTodo()">
+    <input type="text" placeholder="Your To-Do" ng-model="todoText" />
   </form>
 
   <ul id="todo_list">
     <li ng-repeat="todo in todos | filter:query">
-      <input type="checkbox" name="check_{{todo.index}}" id="check_{{todo.index}}" />
-      <label for="check_{{todo.index}}">{{todo.title}}</label>
-      <a href="#delete" class="delete" data-todoid="{{todo.id}}">delete</a>
+      <input type="checkbox" name="check_{{todo.id}}" id="check_{{todo.id}}" ng-model="todo.done" />
+      <label class="done-{{todo.done}}" for="check_{{todo.id}}">{{todo.title}}</label>
+      <a href="#delete" class="delete" ng-click="deleteTodo()">delete</a>
     </li>
   </ul>
 

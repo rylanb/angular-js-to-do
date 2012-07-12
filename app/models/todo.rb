@@ -5,4 +5,5 @@ class Todo < ActiveRecord::Base
   def finished?
     return self.done == true
   end
+
 end

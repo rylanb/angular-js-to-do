@@ -7,6 +7,31 @@ function ToDosListCTRL($scope, $http) {
   $http.get('todos/').success(function(data) {
     $scope.todos = data;
   });
+
+  $scope.addTodo = function() {
+    $scope.todos.push({title: $scope.todoText, done: false})
+    $scope.todoText = '';
+  }
+
+  $scope.deleteTodo = function() {
+    var index = this.$index;
+    $scope.todos.splice(index, 1);
+
+    //Now remove from DB
+    $.ajax({
+      url: "/todos/" + this.todo.id,
+      dataType: 'json',
+      type: 'DELETE'
+    }).done(function() {
+      alert('deleted!')
+    });
+  }
+
+  $scope.markTodoDone = function() {
+    var $todo = $(this.todo);
+    $todo.remove()
+    //$todo[0].parent('li').addClass('done');
+  }
 }
 
 //Setup for binding of form/delete events
@@ -24,18 +49,10 @@ $(function() {
       dataType: 'json',
       type: 'POST'
     }).done(function() {
-      console.log('created!');
     });
   });
 
   $('#todo_list').on('click', '.delete', function(e){
     e.preventDefault();
-    $.ajax({
-      url: "/todos/" + $(this).data('todoid'),
-      dataType: 'json',
-      type: 'DELETE'
-    }).done(function() {
-      alert('deleted!')
-    });
   });
 });

@@ -22,7 +22,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find(params[:id])
+    @todo = Todo.find(params[:id].to_i)
     @todo.destroy
     render :json => "OK", :status => :ok
   end
