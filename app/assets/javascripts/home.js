@@ -23,14 +23,19 @@ function ToDosListCTRL($scope, $http) {
       dataType: 'json',
       type: 'DELETE'
     }).done(function() {
-      alert('deleted!')
     });
   }
 
   $scope.markTodoDone = function() {
-    var $todo = $(this.todo);
-    $todo.remove()
-    //$todo[0].parent('li').addClass('done');
+    var index = this.$index;
+
+    //Now remove from DB
+    $.ajax({
+      url: "/todos/" + this.todo.id,
+      dataType: 'json',
+      type: 'PUT'
+    }).done(function() {
+    });
   }
 }
 

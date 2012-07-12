@@ -1,5 +1,5 @@
 class Todo < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :title, :done
   validates_presence_of :title
 
   def finished?

@@ -7,7 +7,7 @@
 
   <ul id="todo_list">
     <li ng-repeat="todo in todos | filter:query">
-      <input type="checkbox" name="check_{{todo.id}}" id="check_{{todo.id}}" ng-model="todo.done" />
+      <input type="checkbox" name="check_{{todo.id}}" id="check_{{todo.id}}" ng-model="todo.done" ng-click="markTodoDone()" />
       <label class="done-{{todo.done}}" for="check_{{todo.id}}">{{todo.title}}</label>
       <a href="#delete" class="delete" ng-click="deleteTodo()">delete</a>
     </li>

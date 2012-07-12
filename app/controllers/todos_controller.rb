@@ -19,6 +19,11 @@ class TodosController < ApplicationController
   end
 
   def update
+    @todo = Todo.find(params[:id].to_i)
+    doneVal = false
+    doneVal = @todo.finished? ? false : true
+    @todo.update_attributes(done: doneVal)
+    render :json => @todo.to_json, :status => :ok
   end
 
   def destroy
