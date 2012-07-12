@@ -19,11 +19,12 @@
     font-size: 30px;
     line-height: 34px;
   }
-  #todos_form {
-    input {
-      padding: 5px;
-      width: 350px;
-    }
+  input[type="text"] {
+    padding: 5px;
+    width: 350px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
   #todos_data {
     display: none;
