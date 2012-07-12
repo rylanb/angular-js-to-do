@@ -2,8 +2,11 @@
 // All this logic will automatically be available in application.js.
 
 //Angular Functions
-function ToDosListCTRL($scope) {
-  $scope.todos = $('#todos_data').data('todos');
+function ToDosListCTRL($scope, $http) {
+  //$scope.todos = $('#todos_data').data('todos');
+  $http.get('todos/').success(function(data) {
+    $scope.todos = data;
+  });
 }
 
 //Setup for binding of form/delete events
