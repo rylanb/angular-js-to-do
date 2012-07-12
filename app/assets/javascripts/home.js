@@ -37,6 +37,20 @@ function ToDosListCTRL($scope, $http) {
     }).done(function() {
     });
   }
+
+  $scope.remaining = function() {
+    var count, todo, _i, _len, _ref;
+    count = 0;
+    _ref = $scope.todos;
+    if( _ref === undefined ) { return }
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      todo = _ref[_i];
+      if (!todo.done) {
+        count++;
+      }
+    }
+    return count;
+  }
 }
 
 //Setup for binding of form/delete events
