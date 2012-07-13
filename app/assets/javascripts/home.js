@@ -55,7 +55,7 @@ function ToDosListCTRL($scope, $http) {
     return count;
   }
 }
-
+PhoneListCtrl.$inject = ['$scope', '$http'];
 //Setup for binding of form/delete events
 $(function() {
   //Call angular setup/functions to prevent auto creation
