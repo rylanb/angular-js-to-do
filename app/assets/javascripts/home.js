@@ -9,8 +9,11 @@ function ToDosListCTRL($scope, $http) {
   });
 
   $scope.addTodo = function() {
-    $scope.todos.push({title: $scope.todoText, done: false})
-    $scope.todoText = '';
+    $http({url: "/todos/", data: {"title" : $scope.todoText},method: 'POST'})
+    .success(function(data) {
+      $scope.todos.push({id: data.id, title: data.title, done: false});
+      $scope.todoText = '';
+    });
   }
 
   $scope.deleteTodo = function() {
@@ -62,13 +65,7 @@ $(function() {
 
   //Bind Click/Submit Handlers
   $('#todos_form').submit(function(){
-    $.ajax({
-      url: "/todos/",
-      data: {"title" : $(this).find('input').val()},
-      dataType: 'json',
-      type: 'POST'
-    }).done(function() {
-    });
+
   });
 
   $('#todo_list').on('click', '.delete', function(e){
