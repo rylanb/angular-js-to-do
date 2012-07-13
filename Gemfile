@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'sqlite3'
 gem 'json'
+gem 'thin'
+gem 'pg'
+gem 'heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,6 +19,7 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 group :test, :development do
+  gem 'sqlite3'
   gem 'rspec-rails'
   #gem 'minitest'
   #gem 'capybara-webkit'
