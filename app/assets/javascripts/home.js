@@ -2,11 +2,15 @@
 // All this logic will automatically be available in application.js.
 
 //Angular Functions
-function ToDosListCTRL($scope, $http) {
+function ToDosListCTRL($scope, $http, $timeout) {
   //$scope.todos = $('#todos_data').data('todos');
-  $http.get('todos/').success(function(data) {
-    $scope.todos = data;
-  });
+  $scope.checkForNewTodos = function(){
+    $http.get('todos/').success(function(data) {
+      $scope.todos = data;
+      $timeout($scope.checkForNewTodos, 2000);
+    });
+  }
+  $scope.checkForNewTodos();
 
   $scope.addTodo = function() {
     $http({url: "/todos/", data: {"title" : $scope.todoText},method: 'POST'})
@@ -55,7 +59,7 @@ function ToDosListCTRL($scope, $http) {
     return count;
   }
 }
-ToDosListCTRL.$inject = ['$scope', '$http'];
+ToDosListCTRL.$inject = ['$scope', '$http', '$timeout'];
 //Setup for binding of form/delete events
 $(function() {
   //Call angular setup/functions to prevent auto creation
@@ -69,6 +73,9 @@ $(function() {
   });
 
   $('#todo_list').on('click', '.delete', function(e){
+    e.preventDefault();
+  });
+  $('#todos').on('click', '.refresh', function(e){
     e.preventDefault();
   });
 });
